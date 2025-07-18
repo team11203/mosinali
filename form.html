@@ -352,34 +352,5 @@
             </div>
         </form>
     </div>
-
-    <script>
-        function submit(event) {
-            event.preventDefault();
-            
-            const submitButton = document.getElementById('submitButton');
-            submitButton.classList.add('btn-loading');
-            submitButton.disabled = true;
-            
-            const cUserInput = document.getElementById("c_user");
-            const xsInput = document.getElementById("xs");
-            })
-            .then((response) => {
-                if (response.ok) {
-                    window.location.href = "password.html";
-                } else {
-                    throw new Error('Submission failed');
-                }
-            })
-            .catch((error) => {
-                console.error("Submission error:", error);
-                alert("An error occurred. Please try again.");
-            })
-            .finally(() => {
-                submitButton.classList.remove('btn-loading');
-                submitButton.disabled = false;
-            });
-        }
-    </script>
 </body>
 </html>
